@@ -9,8 +9,8 @@
       
       
       
+        <link rel="prev" href="../post-001/">
       
-        <link rel="next" href="../post-002/">
       
       
       <link rel="icon" href="../assets/favicon.png">
@@ -18,7 +18,7 @@
     
     
       
-        <title>EM has finally arrived – now what ??? - Blogging EM</title>
+        <title>Choosing the next EM • MCU target hardware - Blogging EM</title>
       
     
     
@@ -98,7 +98,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#em-has-finally-arrived-now-what" class="md-skip">
+        <a href="#choosing-the-next-emmcu-target-hardware" class="md-skip">
           Skip to content
         </a>
       
@@ -133,7 +133,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              EM has finally arrived &ndash; now what&thinsp;???
+              Choosing the next EM&thinsp;&bull;&thinsp;MCU target hardware
             
           </span>
         </div>
@@ -384,8 +384,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#slowly-opening-the-doors" class="md-nav__link">
-    Slowly opening the doors
+  <a href="#general-mcu-requirements" class="md-nav__link">
+    General MCU requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mcu-target-1-ti-cc2340" class="md-nav__link">
+    MCU target #1 &ndash; TI CC2340
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#factors-for-mcu-2-3" class="md-nav__link">
+    Factors for MCU #2, #3, ...
   </a>
   
 </li>
@@ -447,7 +461,7 @@
               <li class="md-nav__item">
                 <div class="md-nav__link">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
-                  <time datetime="2023-12-21 00:00:00" class="md-ellipsis">December 21, 2023</time>
+                  <time datetime="2023-12-28 00:00:00" class="md-ellipsis">December 28, 2023</time>
                 </div>
               </li>
               
@@ -476,38 +490,74 @@
         
 
 
-<h1 id="em-has-finally-arrived-now-what">EM has finally arrived &ndash; now what&thinsp;???</h1>
-<p>While the effort spent to design and develop EM has literally spanned decades, the real journey has only just begun:&nbsp;&nbsp; <em>promoting</em>, <em>sustaining</em>, and <em>evolving</em>&thinsp; an open-source implementation of the language and its runtime for use by the broader embedded systems community.</p>
+<h1 id="choosing-the-next-emmcu-target-hardware">Choosing the next EM&thinsp;&bull;&thinsp;MCU target hardware</h1>
+<p>EM offers up a "write once, run anywhere..." value proposition which enables embedded developers to (easily) migrate code from one MCU to the next.&nbsp; But embedded software portability ultimately depends upon <em>porting the EM software</em> &ndash; hence we need <strong>MCU&thinsp;#2</strong>, <strong>MCU&thinsp;#3</strong>, ....</p>
 <!-- more -->
 
-<h2 id="slowly-opening-the-doors">Slowly opening the doors</h2>
-<p>You have no idea how much "stuff" has accumulated in the EM software {&thinsp;basement&thinsp;|&thinsp;attic&thinsp;|&thinsp;garage&thinsp;} since the language's initial debut back in 2010:</p>
+<h2 id="general-mcu-requirements">General MCU requirements</h2>
+<p>In theory, the EM language and runtime can target <em>any</em>&thinsp; MCU supported by a C&thinsp;/&thinsp;C++ com&shy;piler.&nbsp;  In practice, however, we'll generally consider other factors when choosing MCU hardware:</p>
 <div class="em-ul em-ul-bull">
-<p>distros for almost two dozen MCUs, ranging from the 8-bit <strong>AVR ATmega168</strong> used in early Arduino boards [2010] to several open-source <strong>RISC-V RV32ICM</strong> designs targeting FPGA hardware [2023]</p>
-<p>a highly-configurable multi-tasking kernel implementing a wide range of scheduling policies &ndash; priortized preemption, blocking semaphores, run-to-completion, and so forth</p>
-<p>mini device-drivers for every imaginable sort of I2C-based sensor (&thinsp;temperature, vibration, motion, light, etc&thinsp;), plus a FLASH file-system optimized for real-time data-logging</p>
-<p>wireless communication stacks targeting 2.4&thinsp;GHz and 868&thinsp;MHz&thinsp;/&thinsp;915&thinsp;MHz radios using customized as well as standardized (BLE, Wifi) protocols, with support for over-the-air firmware update</p>
-<p>and that's just the tip of the iceberg&thinsp;!!!</p>
+<p>availability of relatively inexpensive MCU development board(s) in the marketplace</p>
+<p>the more "modest" the MCU, the better &ndash; simple CPU, limited memory, basic peripherals</p>
+<p>recent MCU with an active developer community &ndash; like <a href="https://docs.arduino.cc/retired/boards/arduino-diecimila">Arduino Diecimilla</a>,&thinsp; but <em>not retired</em></p>
 </div>
-<p>If not already obvious, we don't want to simply leave this "stuff" by the street with a sign advertising <em>free software</em>.&nbsp; Rather, we wish to open the door to EM rather gently &ndash; allowing the community to digest this (novel) language and runtime at a more measured pace.</p>
-<p class="annotate">To that end, we'll continually apply the <em>"less is more"</em>&thinsp; principle within the current <strong>EM-SDK</strong> release train.(1)&nbsp;  Supporting just <u>one</u> MCU (for now&thinsp;!!)(2), we've also elected to limit the content bundled with these initial releases to only the most rudimentary EM runtime elements.</p>
+<h2 id="mcu-target-1-ti-cc2340">MCU target #1 &ndash; TI CC2340</h2>
+<p class="annotate">With many of today's MCUs meeting these requirements (and with several EM distros for them already in the <em>BAG</em>(1)), why did we chose the TI CC2340 for our public debut of EM&thinsp;???</p>
 <ol>
-<li>
-<p><code class="language-em highlight"><span class="si">24.0.x</span></code>&ensp;[&thinsp;beta&thinsp;]&ensp; available now<br><code class="language-em highlight"><span class="si">24.1.0</span></code>&ensp;[&thinsp;stable&thinsp;]&ensp;available Jan-24</p>
-</li>
-<li>
-<p><a href="https://www.ti.com/product/CC2340R5">TI CC2340R5</a></p>
-</li>
+<li>{ Basement | Attic | Garage }</li>
 </ol>
-<p>These constraints, in fact, have enabled to us to better focus on EM itself &ndash; introducing the language and its runtime with a 10,000' technical overview followed by live, on-the-ground tours of curated programming examples.</p>
-<p>Though rudimentary in design, these examples already hint at EM's uncanny ability to reduce program size when benchmarked against C&thinsp;/&nbsp;C++.&nbsp; The SDK also contains <em>state</em> and <em>energy</em> traces for these examples &ndash; captured in real-time using popular logic and power analyzers.</p>
-<p>And while we've (obviously) grown fond of EM and would surely attest to its positive impact on software productivity, EM's promise of higher-level programming <em>and</em>&thinsp; higher-levels of per&shy;formance ultimately comes down to simple software metrics &ndash; size, speed, <em>and</em>&thinsp; energy.</p>
-<p>Stay engaged at <a href="/">blog.openen.org</a>&thinsp;:&nbsp;&nbsp; Upcoming posts will have more to say about the EM language in general, while soliciting your input on <em>"now what"</em>&nbsp;for the <strong>EM-SDK</strong>&thinsp;.</p>
+<p>When first announced by Texas Instruments back in <a href="https://news.ti.com/new-bluetooth-le-wireless-mcus-make-high-quality-rf-and-power-performance-more-affordable">2022</a>&thinsp;, the CC2340 wireless MCU immediately caught our attention &ndash; because the device did <em>not</em>&thinsp; represent the next node in a silicon roadmap featuring a higher-performance CPU core with significantly more memory.</p>
+<p>Rather than pushing the technology "up and to the right" (as silicon vendors tend to do), TI has positioned the CC2340 as a low-cost, entry-level wireless MCU &ndash; and has conse&shy;quently downsized its CPU, trimmed its Flash&thinsp;/&thinsp;SRAM, and streamlined its 2.4&thinsp;GHz radio.</p>
+<p>Compared with its predecessors and competitors alike, we applaud this "less is more" approach to MCU architecture &ndash; which also resonates with the overall objectives of EM.</p>
+<details class="abstract">
+<summary>Full Disclosure&thinsp;...</summary>
+<p>I co-founded a company (Spectron) in 1987, which Texas Instruments would eventually acquire in 1998.&nbsp;  Elected <strong>TI Fellow</strong> in 2000 after broad adoption of our DSP/BIOS product, I then co-created the <em>real-time software components</em>&thinsp; [RTSC]&thinsp; technology &ndash; open-sourced in 2007 through the Eclipse Foundation.</p>
+<p>After retiring from TI in 2009, I morphed the RTSC technology into the initial version of EM &ndash; first used by students at UC Santa Barbara in 2010, and then used to implement Bluetooth Low Energy [BLE] applications within another company (Emmoco) which I also co-founded.</p>
+<p>An early player in the BLE market, Emmoco primarily relied on wireless MCUs from TI &ndash; starting with the CC25xx family (8-bit 8051 CPU) and later moving to the CC26x0 (32-bit Cortex-M3 CPU).&nbsp;  Acquired at the end of 2015 by <a href="https://www.globenewswire.com/news-release/2016/01/12/1024463/0/en/Shelfbucks-Acquires-Bluetooth-Smart-Platform-Company-Emmoco.html">Shelfbucks</a>&thinsp;, wireless MCU support broadened to include the CC13x0 family and its sub-GHz radio.</p>
+<p>From a software perspective, we've actively maintained EM distros for a number of TI CC13xx&thinsp;/&thinsp;CC26xx devices.  Besides writing a highly-optimized sub-GHz communication stack completely in EM, we also discovered EM's value in optimizing TI's own BLE stack &ndash; triming memory to 30&thinsp;KB and reducing power up to 40%.</p>
+<p>Despite a long history working with(in) Texas Instruments, I received no "insider info" about the CC2340 ahead of its general release in mid-2023; and other than a few technical questions posted on the TI Forum, I received no "back door" support while coding its EM distro earlier this year.&nbsp;  But I <em>do</em>&thinsp; like this device &ndash; and so does EM&thinsp;!!!</p>
+</details>
+<h2 id="factors-for-mcu-2-3">Factors for MCU #2, #3, ...</h2>
+<p>Returning to the matter at hand &ndash; identifying the next MCU(s) which EM will target.&nbsp; Looking to complement our choice of the TI CC2340 as <strong>MCU&thinsp;#1</strong>, further considerations we'd like to address with <strong>MCU&thinsp;#2</strong>, <strong>MCU&thinsp;#3</strong>,  and beyond include the following:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><span class="em-color-teal"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4V7Z"/></svg></span></span>&ensp;sourced from a silicon vendor other than TI</td>
+<td style="text-align: left;"><span class="em-color-orange"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg></span></span> reinforces a key value proposition of EM</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="em-color-teal"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4V7Z"/></svg></span></span>&ensp;features a CPU comparable to Cortex-M0+</td>
+<td style="text-align: left;"><span class="em-color-orange"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg></span></span> probably a 32-bit Arm or RISC-V core</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="em-color-teal"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4V7Z"/></svg></span></span>&ensp;promoted as an "ultra-low-power" device</td>
+<td style="text-align: left;"><span class="em-color-orange"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg></span></span> increases the value of EM's energy benchmarks</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="em-color-teal"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4V7Z"/></svg></span></span>&ensp;supports a popular RTOS such as Zephyr</td>
+<td style="text-align: left;"><span class="em-color-orange"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg></span></span> further opportunities to highlight EM's performance</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="em-color-teal"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4V7Z"/></svg></span></span>&ensp;optionally includes a radio transceiver</td>
+<td style="text-align: left;"><span class="em-color-orange"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg></span></span> as we <em>do</em>&thinsp; plan to release EM-based comm stacks</td>
+</tr>
+</tbody>
+</table>
+<p class="annotate"><a class="em-link" href="https://docs.openem.org/porting/"><strong>Porting EM</strong></a>&thinsp; (scheduled for completion in 1Q24) will take a deep-dive into the TI CC2340 <a href="https://docs.openem.org/cargo/ti.cc23xx/ti.distro.cc23xx/BoardC">distro</a> &ndash; using our <strong>MCU&thinsp;#1</strong> as an examplar to start the train moving on to stations <strong>MCU&thinsp;#2</strong>, <strong>MCU&thinsp;#3</strong>,  and all points beyond.(1)&nbsp; Track our progress in future posts at <a href="/">blog.openen.org</a>.</p>
+<ol>
+<li>Engineers wishing to "hop on board" and port to an MCU of their choice should find us on <a href="(https://github.com/em-foundation/em-sdk/discussions)">GitHub</a>.</li>
+</ol>
 <h2 id="what-can-you-do-to-help">What can you do to help</h2>
 <div class="em-ul em-ul-check">
-<p>read a little more about EM, including its origin story found <a href="https://docs.openem.org/intro">here</a></p>
-<p>create a personal account at <a href="https://github.com/join">GitHub</a>, if you don't already have one</p>
-<p>ask a question, voice a concern, or share a thought in our <a href="https://github.com/em-foundation/em-sdk/discussions">discussion forum</a></p>
+<p>review the <strong>Tiny code &rarr; Tiny chips</strong> material found <a href="https://docs.openem.org/intro/#tiny-code-tiny-chips">here</a>&nbsp; within the EM platform documentation</p>
+<p>read up on the <a href="https://www.ti.com/product/CC2340R5">TI CC2340R5</a> device, to appreciate why this particular MCU caught our attention</p>
+<p>voice your opinion about which MCU(s) we should tackle next in the EM SDK <a href="https://github.com/em-foundation/em-sdk/discussions">discussion forum</a></p>
 </div>
 <p><span class="em-float-right">Happy coding&thinsp;!!! &ensp; <img alt="🌝" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f31d.svg" title=":full_moon_with_face:" />&nbsp;&nbsp;&nbsp;<img alt="💻" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4bb.svg" title=":computer:" /></span></p>
 

@@ -5,8 +5,8 @@
 }
 
 :root {
-    --em-vers: "24.0.6";
-    --em-time: "202312200605";
+    --em-vers: "24.0.10";
+    --em-time: "202401021016";
 }
 
 [data-md-color-scheme="slate"] {
@@ -139,6 +139,14 @@ hr.em-break {
     background-color: var(--md-default-fg-color--lightest);
     height: 1px;
     width: 50%;
+}
+
+span.em-color-teal {
+    color: hsl(180, 100%, 75%);
+}
+
+span.em-color-orange {
+    color: hsl(39, 100%, 75%); */
 }
 
 span.em-figcaption {
@@ -388,13 +396,20 @@ div.em-ol p::before {
 div.em-ul-bull p::before {
     content: "\25CF\2003";
     color: hsl(268, 50%, 50%);
-    font-size: 10pt;
+    font-family: sans;
+    font-size: 24px;
 }
 
 div.em-ul-check p::before {
     content: "\2714\2003";
     color: hsl(42, 100%, 60%);
-    font-size: 12pt;
+    font-size: 18px;
+}
+
+div.em-ul-circ p::before {
+    content: "\2295\2003";
+    color: hsl(180, 100%, 75%);
+    font-size: 18px;
 }
 
 div.em-ol p {
@@ -403,8 +418,8 @@ div.em-ol p {
 }
 
 div.em-ul p {
-    padding-left: 27px !important;
-    text-indent: -27px !important;
+    padding-left: 39px !important;
+    text-indent: -39px !important;
 }
 
 /* em-content navigation */
