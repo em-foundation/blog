@@ -2,8 +2,6 @@
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
-
-      <meta name="description" property="og:description" content="blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah ">
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -511,6 +509,9 @@
 <p>Vendor data sheets might specify that an ultra-low-power MCU draws (say) <strong>700&thinsp;nA @&thinsp;3&thinsp;V</strong> when in its "deep-sleep" mode.&nbsp; Very nice &ndash; but until we factor in our application workload, we have no way to truly assess the impact of these MCU specs on overall energy efficiency.</p>
 <!-- more -->
 
+<figure id="fig1" style="display:none">
+<p><a class="glightbox" href="/assets/summary-003.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image info" src="/assets/summary-003.png" /></a></p>
+</figure>
 <h2 id="the-impact-of-software">The impact of software</h2>
 <p>Unless our MCU stays completely inert &ndash; in "shutdown" mode, awaiting reset &ndash; embedded application software has undue influence over the system's total power consumption.</p>
 <p>Targeting the most resource-constrained (ultra-low-power) MCUs, many EM applications will follow a relatively simple, cyclic design pattern:</p>
