@@ -9,8 +9,8 @@
       
       
       
+        <link rel="prev" href="../post-002/">
       
-        <link rel="next" href="../post-002/">
       
       
       <link rel="icon" href="../assets/favicon.png">
@@ -18,7 +18,7 @@
     
     
       
-        <title>EM has finally arrived – now what ??? - Blogging EM</title>
+        <title>Benchmark[et]ing ultra-low-power with EM - Blogging EM</title>
       
     
     
@@ -98,7 +98,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#em-has-finally-arrived-now-what" class="md-skip">
+        <a href="#benchmarketing-ultra-low-power-with-em" class="md-skip">
           Skip to content
         </a>
       
@@ -133,7 +133,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              EM has finally arrived &ndash; now what&thinsp;???
+              Benchmark[et]ing ultra-low-power with EM
             
           </span>
         </div>
@@ -406,8 +406,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#slowly-opening-the-doors" class="md-nav__link">
-    Slowly opening the doors
+  <a href="#the-impact-of-software" class="md-nav__link">
+    The impact of software
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#energy-j-not-power-w" class="md-nav__link">
+    Energy (J) &ndash; not power (W)
   </a>
   
 </li>
@@ -469,7 +476,7 @@
               <li class="md-nav__item">
                 <div class="md-nav__link">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
-                  <time datetime="2023-12-21 00:00:00" class="md-ellipsis">December 21, 2023</time>
+                  <time datetime="2024-01-04 00:00:00" class="md-ellipsis">January 4, 2024</time>
                 </div>
               </li>
               
@@ -481,7 +488,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
                     <span class="md-ellipsis">
                       
-                        3 min read
+                        4 min read
                       
                     </span>
                   </div>
@@ -498,38 +505,88 @@
         
 
 
-<h1 id="em-has-finally-arrived-now-what">EM has finally arrived &ndash; now what&thinsp;???</h1>
-<p>While the effort spent to design and develop EM has literally spanned decades, the real journey has only just begun:&nbsp;&nbsp; <em>promoting</em>, <em>sustaining</em>, and <em>evolving</em>&thinsp; an open-source implementation of the language and its runtime for use by the broader embedded systems community.</p>
+<h1 id="benchmarketing-ultra-low-power-with-em">Benchmark[et]ing ultra-low-power with EM</h1>
+<p>Vendor data sheets might specify that an ultra-low-power MCU draws (say) <strong>700&thinsp;nA @&thinsp;3&thinsp;V</strong> when in its "deep-sleep" mode.&nbsp; Very nice &ndash; but until we factor in our application workload, we have no way to truly assess the impact of these MCU specs on overall energy efficiency.</p>
 <!-- more -->
 
-<h2 id="slowly-opening-the-doors">Slowly opening the doors</h2>
-<p>You have no idea how much "stuff" has accumulated in the EM software {&thinsp;basement&thinsp;|&thinsp;attic&thinsp;|&thinsp;garage&thinsp;} since the language's initial debut back in 2010:</p>
-<div class="em-ul em-ul-bull">
-<p>distros for almost two dozen MCUs, ranging from the 8-bit <strong>AVR ATmega168</strong> used in early Arduino boards [2010] to several open-source <strong>RISC-V RV32ICM</strong> designs targeting FPGA hardware [2023]</p>
-<p>a highly-configurable multi-tasking kernel implementing a wide range of scheduling policies &ndash; priortized preemption, blocking semaphores, run-to-completion, and so forth</p>
-<p>mini device-drivers for every imaginable sort of I2C-based sensor (&thinsp;temperature, vibration, motion, light, etc&thinsp;), plus a FLASH file-system optimized for real-time data-logging</p>
-<p>wireless communication stacks targeting 2.4&thinsp;GHz and 868&thinsp;MHz&thinsp;/&thinsp;915&thinsp;MHz radios using customized as well as standardized (BLE, Wifi) protocols, with support for over-the-air firmware update</p>
-<p>and that's just the tip of the iceberg&thinsp;!!!</p>
-</div>
-<p>If not already obvious, we don't want to simply leave this "stuff" by the street with a sign advertising <em>free software</em>.&nbsp; Rather, we wish to open the door to EM rather gently &ndash; allowing the community to digest this (novel) language and runtime at a more measured pace.</p>
-<p class="annotate">To that end, we'll continually apply the <em>"less is more"</em>&thinsp; principle within the current <strong>EM-SDK</strong> release train.(1)&nbsp;  Supporting just <u>one</u> MCU (for now&thinsp;!!)(2), we've also elected to limit the content bundled with these initial releases to only the most rudimentary EM runtime elements.</p>
+<h2 id="the-impact-of-software">The impact of software</h2>
+<p>Unless our MCU stays completely inert &ndash; in "shutdown" mode, awaiting reset &ndash; embedded application software has undue influence over the system's total power consumption.</p>
+<p>Targeting the most resource-constrained (ultra-low-power) MCUs, many EM applications will follow a relatively simple, cyclic design pattern:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><span class="em-label"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 17h-2V9h-2V7h4m5-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg></span> &nbsp;wakeup from deep-sleep mode</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="em-label"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 11a2 2 0 0 1-2 2h-2v2h4v2H9v-4a2 2 0 0 1 2-2h2V9H9V7h4a2 2 0 0 1 2 2m4-6H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg></span> &nbsp;acquire data from the environment</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="em-label"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 10.5a1.5 1.5 0 0 1-1.5 1.5c.84 0 1.5.67 1.5 1.5V15c0 1.11-.89 2-2 2H9v-2h4v-2h-2v-2h2V9H9V7h4c1.11 0 2 .89 2 2m4-6H5c-1.09 0-2 .9-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg></span> &nbsp;analyze this data using an algorithm</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="em-label"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 17h-2v-4H9V7h2v4h2V7h2m4-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg></span> &nbsp;transmit results (wirelessly) to a gateway</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="em-label"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 9h-4v2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H9v-2h4v-2H9V7h6m4-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg></span> &nbsp;re-enter (low-power) deep-sleep mode</span></td>
+</tr>
+</tbody>
+</table>
+<p>With application requirements dictating active duty-cycles ranging from once-per-second down to once-per-day, minimizing elapsed time between steps <span class="twemoji em-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 17h-2V9h-2V7h4m5-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg></span> through <span class="twemoji em-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 9h-4v2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H9v-2h4v-2H9V7h6m4-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg></span> would surely lower total power consumption &ndash; by re-entering "deep-sleep" that much sooner.</p>
+<p>In practice, steps <span class="twemoji em-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 11a2 2 0 0 1-2 2h-2v2h4v2H9v-4a2 2 0 0 1 2-2h2V9H9V7h4a2 2 0 0 1 2 2m4-6H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg></span> and <span class="twemoji em-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 17h-2v-4H9V7h2v4h2V7h2m4-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg></span> involve MCU peripherals performing I/O operations at application-defined data-rates &ndash; an ADC sampling at 15&thinsp;kHz, a radio transmitting at 1&thinsp;Mbps, etc.&thinsp;  With little to do while awaiting I/O completion, software often idles within a "lite-sleep" mode.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Typical MCU power specs</p>
+<p>MCU <strong>lite-sleep</strong> mode typically consumes under <strong>1&thinsp;mW</strong> of power and enables interrupt response times of less than <strong>1&thinsp;&mu;</strong>&thinsp;.&nbsp;  But while the CPU idles, other peripherals such as the radio could remain active &ndash; in fact drawing <em>more</em>&thinsp; power than the CPU would alone.</p>
+<p>By constract, MCU <strong>deep-sleep</strong> mode might consume well under <strong>10&thinsp;&mu;W</strong> of power &ndash; but wakeup times could stretch to <strong>100s of &mu;s</strong>&thinsp;.&thinsp;  While any active peripheral can awaken the CPU when idling, "deep-sleep" mode only powers a limited set of MCU elements (GPIOs, RTCs) which can trigger wakeup interrupts.</p>
+<p class="annotate">Finally, MCU <strong>active</strong> mode &ndash; when the CPU fetches and executes instructions &ndash; will typically draw power at levels expressed as <strong>&mu;W&thinsp;/&thinsp;Mhz</strong>&thinsp;.&nbsp;  Standard industry metrics like <strong>EEMBC CoreMark&reg;</strong>&thinsp; help normalize performance claims by individual MCU vendors; a port of this popular benchmark to the EM platform has already begun.(1)</p>
 <ol>
-<li>
-<p><code class="language-em highlight"><span class="si">24.0.x</span></code>&ensp;[&thinsp;beta&thinsp;]&ensp; available now<br><code class="language-em highlight"><span class="si">24.1.0</span></code>&ensp;[&thinsp;stable&thinsp;]&ensp;available Jan-24</p>
-</li>
-<li>
-<p><a href="https://www.ti.com/product/CC2340R5">TI CC2340R5</a></p>
-</li>
+<li>Stay tuned for more information in 1Q24.</li>
 </ol>
-<p>These constraints, in fact, have enabled to us to better focus on EM itself &ndash; introducing the language and its runtime with a 10,000' technical overview followed by live, on-the-ground tours of curated programming examples.</p>
-<p>Though rudimentary in design, these examples already hint at EM's uncanny ability to reduce program size when benchmarked against C&thinsp;/&nbsp;C++.&nbsp; The SDK also contains <em>state</em> and <em>energy</em> traces for these examples &ndash; captured in real-time using popular logic and power analyzers.</p>
-<p>And while we've (obviously) grown fond of EM and would surely attest to its positive impact on software productivity, EM's promise of higher-level programming <em>and</em>&thinsp; higher-levels of per&shy;formance ultimately comes down to simple software metrics &ndash; size, speed, <em>and</em>&thinsp; energy.</p>
-<p>Stay engaged at <a href="/">blog.openen.org</a>&thinsp;:&nbsp;&nbsp; Upcoming posts will have more to say about the EM language in general, while soliciting your input on <em>"now what"</em>&nbsp;for the <strong>EM-SDK</strong>&thinsp;.</p>
+</div>
+<p>Once the MCU returns to its "active" mode &ndash; and the application finally does some useful work &ndash; the impact of software on total power consumption boils down to the <em>number</em>&thinsp; of instructions the CPU must fetch and execute.&nbsp; But how can we best quantify this impact&thinsp;???</p>
+<h2 id="energy-j-not-power-w">Energy (<code>J</code>) &ndash; not power (<code>W</code>)</h2>
+<p>As software practitioners, we need to measure <strong>joules</strong> and not <strong>watts</strong>.&thinsp; Only by focusing on total power consumption over a period of time can we begin to appreciate the oversized&nbsp; <img alt="😉" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f609.svg" title=":wink:" /> impact our code can have on overall energy efficiency.</p>
+<p class="annotate">To illustrate, let's consider a basic BLE beacon application that advertises packets once-per-second &ndash; following the simple cyclic design-pattern outlined earlier.&nbsp;  To make matters more interesting, we'll compare <em>two different</em>&thinsp; BLE stacks otherwise running on the <em>same</em>&thinsp; MCU:&thinsp;(1)</p>
+<ol>
+<li>NXP's <a href="https://www.nxp.com/products/wireless-connectivity/bluetooth-low-energy/kw39-38-37-32-bit-bluetooth-5-0-long-range-mcus-with-can-fd-and-lin-bus-options-arm-cortex-m0-plus-core:KW39-38-37">KW39/38/37&thinsp;</a>&thinsp; long-range BLE MCU</li>
+</ol>
+<div class="em-ul em-ul-bull">
+<p>a <strong>legacy</strong> BLE stack &ndash; written in C and supplied by the MCU vendor</p>
+<p>a prototype BLE stack &ndash; written entirely in <strong>EM</strong> and coming available in 2024</p>
+</div>
+<p class="annotate">To begin, let's look at a pair of power profiles which report the amount of energy (&thinsp;in <span class="em-color-primary">&thinsp;<strong>&mu;J</strong></span>&thinsp;) each stack consumes within a one-second time window.&ensp;  Spoiler alert &ndash; <strong>EM</strong> wins&thinsp;!!! (1)</p>
+<ol>
+<li>We captured these profiles using a Joulescope <a href="https://www.joulescope.com/products/js220-joulescope-precision-energy-analyzer">JS220</a>&thinsp; energy analyzer &ndash; worth 10x its cost, but maybe 10x over budget.</li>
+</ol>
+<figure id="fig1">
+<p><a class="glightbox" href="/assets/fig-003-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image info" src="/assets/fig-003-1.png" /></a></p>
+<figcaption>Energy per Advertising Cycle
+</figcaption>
+</figure>
+<p>Based on these actual values, the <strong>legacy</strong> and <strong>EM</strong> stacks could (in theory&thinsp;!!) advertise for 1.3 and 3.2 years respectively using a CR2032 coin-cell battery with 220&thinsp;mAh of charge.&thinsp;  But <em>why</em>&thinsp; does one stack significantly outperform the other&thinsp;???&nbsp; To answer that question, let's zoom-in:</p>
+<figure id="fig1">
+<p><a class="glightbox" href="/assets/fig-003-2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image info" src="/assets/fig-003-2.png" /></a></p>
+<figcaption>Energy per Advertising Event 
+</figcaption>
+</figure>
+<p>Inside a BLE advertising event [&thinsp;<strong>wakeup</strong> &rarr; <strong>prepare</strong> &rarr; <strong>transmit</strong> &rarr; <strong>cleanup</strong> &rarr; <strong>sleep</strong>&thinsp;] the actual packet <strong>TX</strong> window happens very quickly (~250&thinsp;ms&thinsp;).&nbsp; While <strong>transmit</strong> does draw more power (even with the CPU idling), <strong>prepare</strong> and <strong>cleanup</strong> times in fact <em>dominate</em>&thinsp; the &mu;J result.</p>
+<div class="admonition tip">
+<p class="admonition-title">Focusing on MCU power specs can blind us to the true impact of software on energy efficiency.</p>
+</div>
+<p>Performing the same BLE procedures almost twice as fast, the <strong>EM</strong> stack requires only 27% of the energy consumed by the <strong>legacy</strong> stack per advertising event.&nbsp;  Another consequential factor here &ndash; a 200&thinsp;K <strong>legacy</strong> stack versus &le;10&thinsp;K of <strong>EM</strong> code executing entirely in fast SRAM&thinsp;!!!</p>
+<div class="admonition bulb">
+<p class="admonition-title">code size does matter <strong>&thinsp;::&nbsp;</strong> less code [&thinsp;<strong>KB</strong>&thinsp;] &thinsp;&rarr;&thinsp; less energy [&thinsp;<strong>&mu;J</strong>&thinsp;]</p>
+</div>
+<p>Follow us at <a href="/">blog.openem.org</a> to learn more about EM's ability to boost energy efficiency.</p>
 <h2 id="what-can-you-do-to-help">What can you do to help</h2>
 <div class="em-ul em-ul-check">
-<p>read a little more about EM, including its origin story found <a href="https://docs.openem.org/intro">here</a></p>
-<p>create a personal account at <a href="https://github.com/join">GitHub</a>, if you don't already have one</p>
-<p>ask a question, voice a concern, or share a thought in our <a href="https://github.com/em-foundation/em-sdk/discussions">discussion forum</a></p>
+<p>study &ndash; or in the worse case, just skim&thinsp;!!&thinsp; &ndash; this material on <a href="https://docs.openem.org/advancing/energy/#measuring-energy">Measuring Energy</a></p>
+<p>find some (human?) resource to help us migrate to the lower-cost <a href="https://www.st.com/en/evaluation-tools/x-nucleo-lpm01a.html">STM32 Power Shield</a></p>
+<p><a href="https://github.com/em-foundation/em-sdk/discussions">show-and-tell</a>&thinsp; the community about your own experience in measuring power consumption</p>
 </div>
 <p><span class="em-float-right">Happy coding&thinsp;!!! &ensp; <img alt="🌝" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f31d.svg" title=":full_moon_with_face:" />&nbsp;&nbsp;&nbsp;<img alt="💻" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4bb.svg" title=":computer:" /></span></p>
 

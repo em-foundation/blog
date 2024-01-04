@@ -6,7 +6,7 @@
 
 :root {
     --em-vers: "24.0.10";
-    --em-time: "202401021016";
+    --em-time: "202401040004";
 }
 
 [data-md-color-scheme="slate"] {
@@ -146,7 +146,11 @@ span.em-color-teal {
 }
 
 span.em-color-orange {
-    color: hsl(39, 100%, 75%); */
+    color: hsl(39, 100%, 75%);
+}
+
+span.em-color-primary {
+    color: var(--md-primary-fg-color);
 }
 
 span.em-figcaption {
