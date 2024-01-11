@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../post-002/">
+        <link rel="prev" href="../post-003/">
       
-      
-        <link rel="next" href="../post-004/">
       
       
       <link rel="icon" href="../assets/favicon.png">
@@ -20,7 +18,7 @@
     
     
       
-        <title>Benchmark[et]ing ultra-low-power with EM - Blogging EM</title>
+        <title>Learning EM through VS Code - Blogging EM</title>
       
     
     
@@ -99,7 +97,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#benchmarketing-ultra-low-power-with-em" class="md-skip">
+        <a href="#learning-em-through-vs-code" class="md-skip">
           Skip to content
         </a>
       
@@ -134,7 +132,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Benchmark[et]ing ultra-low-power with EM
+              Learning EM through VS Code
             
           </span>
         </div>
@@ -423,18 +421,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-impact-of-software" class="md-nav__link">
+  <a href="#em-language-support" class="md-nav__link">
     <span class="md-ellipsis">
-      The impact of software
+      EM language support
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#energy-j-not-power-w" class="md-nav__link">
+  <a href="#touring-em-source-files" class="md-nav__link">
     <span class="md-ellipsis">
-      Energy (J) &ndash; not power (W)
+      Touring EM source files
     </span>
   </a>
   
@@ -505,7 +503,7 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
-                        <time datetime="2024-01-04 00:00:00" class="md-ellipsis">January 4, 2024</time>
+                        <time datetime="2024-01-11 00:00:00" class="md-ellipsis">January 11, 2024</time>
                       </div>
                     </li>
                     
@@ -517,7 +515,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
                           <span class="md-ellipsis">
                             
-                              4 min read
+                              2 min read
                             
                           </span>
                         </div>
@@ -537,94 +535,85 @@
         
 
 
-<h1 id="benchmarketing-ultra-low-power-with-em">Benchmark[et]ing ultra-low-power with EM</h1>
-<p>Vendor data sheets might specify that an ultra-low-power MCU draws (say) <strong>700&thinsp;nA @&thinsp;3&thinsp;V</strong> when in its "deep-sleep" mode.&nbsp; Very nice &ndash; but until we factor in our application workload, we have no way to truly assess the impact of these MCU specs on overall energy efficiency.</p>
+<h1 id="learning-em-through-vs-code">Learning EM through VS Code</h1>
+<p>Popular IDEs such as <strong>Eclipse</strong> and <strong>VS Code</strong> have elevated &thinsp;"support for language <em>X</em>&thinsp;"&thinsp; to one of their most vital features. To that end, our recently published <strong>EM Builder</strong> extension &ndash; freely available from the <a href="https://marketplace.visualstudio.com/items?itemName=the-em-foundation.em-builder">VS Code marketplace</a> &ndash; now brings the EM language into the fold.</p>
 <!-- more -->
 
 <div class="em-nav-arrow">
-<p><a href="/post-002" title="Choosing the next EM&thinsp;&bull;&thinsp;MCU target hardware">&cularr;</a>   <span class="em-float-right"><a href="/post-004" title="Learning EM through VS Code">&curarr;</a></span></p>
+<p><a href="/post-003" title="Benchmark[et]ing ultra-low-power with EM">&cularr;</a></p>
 </div>
-<figure id="fig1" style="display:none">
-<p><a class="glightbox" href="/assets/summary-003.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image info" src="/assets/summary-003.png" /></a></p>
+<figure id="fig0" style="display:none">
+<p><a class="glightbox" href="/assets/summary-004.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image info" src="/assets/summary-004.png" /></a></p>
 </figure>
-<h2 id="the-impact-of-software">The impact of software</h2>
-<p>Unless our MCU stays completely inert &ndash; in "shutdown" mode, awaiting reset &ndash; embedded application software has undue influence over the system's total power consumption.</p>
-<p>Targeting the most resource-constrained (ultra-low-power) MCUs, many EM applications will follow a relatively simple, cyclic design pattern:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><span class="em-label"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 17h-2V9h-2V7h4m5-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg></span> &nbsp;wakeup from deep-sleep mode</span></td>
-</tr>
-<tr>
-<td style="text-align: left;"><span class="em-label"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 11a2 2 0 0 1-2 2h-2v2h4v2H9v-4a2 2 0 0 1 2-2h2V9H9V7h4a2 2 0 0 1 2 2m4-6H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg></span> &nbsp;acquire data from the environment</span></td>
-</tr>
-<tr>
-<td style="text-align: left;"><span class="em-label"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 10.5a1.5 1.5 0 0 1-1.5 1.5c.84 0 1.5.67 1.5 1.5V15c0 1.11-.89 2-2 2H9v-2h4v-2h-2v-2h2V9H9V7h4c1.11 0 2 .89 2 2m4-6H5c-1.09 0-2 .9-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg></span> &nbsp;analyze this data using an algorithm</span></td>
-</tr>
-<tr>
-<td style="text-align: left;"><span class="em-label"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 17h-2v-4H9V7h2v4h2V7h2m4-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg></span> &nbsp;transmit results (wirelessly) to a gateway</span></td>
-</tr>
-<tr>
-<td style="text-align: left;"><span class="em-label"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 9h-4v2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H9v-2h4v-2H9V7h6m4-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg></span> &nbsp;re-enter (low-power) deep-sleep mode</span></td>
-</tr>
-</tbody>
-</table>
-<p>With application requirements dictating active duty-cycles ranging from once-per-second down to once-per-day, minimizing elapsed time between steps <span class="twemoji em-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 17h-2V9h-2V7h4m5-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg></span> through <span class="twemoji em-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 9h-4v2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H9v-2h4v-2H9V7h6m4-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg></span> would surely lower total power consumption &ndash; by re-entering "deep-sleep" that much sooner.</p>
-<p>In practice, steps <span class="twemoji em-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 11a2 2 0 0 1-2 2h-2v2h4v2H9v-4a2 2 0 0 1 2-2h2V9H9V7h4a2 2 0 0 1 2 2m4-6H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg></span> and <span class="twemoji em-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 17h-2v-4H9V7h2v4h2V7h2m4-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg></span> involve MCU peripherals performing I/O operations at application-defined data-rates &ndash; an ADC sampling at 15&thinsp;kHz, a radio transmitting at 1&thinsp;Mbps, etc.&thinsp;  With little to do while awaiting I/O completion, software often idles within a "lite-sleep" mode.</p>
-<div class="admonition abstract">
-<p class="admonition-title">Typical MCU power specs</p>
-<p>MCU <strong>lite-sleep</strong> mode typically consumes under <strong>1&thinsp;mW</strong> of power and enables interrupt response times of less than <strong>1&thinsp;&mu;</strong>&thinsp;.&nbsp;  But while the CPU idles, other peripherals such as the radio could remain active &ndash; in fact drawing <em>more</em>&thinsp; power than the CPU would alone.</p>
-<p>By constract, MCU <strong>deep-sleep</strong> mode might consume well under <strong>10&thinsp;&mu;W</strong> of power &ndash; but wakeup times could stretch to <strong>100s of &mu;s</strong>&thinsp;.&thinsp;  While any active peripheral can awaken the CPU when idling, "deep-sleep" mode only powers a limited set of MCU elements (GPIOs, RTCs) which can trigger wakeup interrupts.</p>
-<p class="annotate">Finally, MCU <strong>active</strong> mode &ndash; when the CPU fetches and executes instructions &ndash; will typically draw power at levels expressed as <strong>&mu;W&thinsp;/&thinsp;Mhz</strong>&thinsp;.&nbsp;  Standard industry metrics like <strong>EEMBC CoreMark&reg;</strong>&thinsp; help normalize performance claims by individual MCU vendors; a port of this popular benchmark to the EM platform has already begun.(1)</p>
-<ol>
-<li>Stay tuned for more information in 1Q24.</li>
-</ol>
-</div>
-<p>Once the MCU returns to its "active" mode &ndash; and the application finally does some useful work &ndash; the impact of software on total power consumption boils down to the <em>number</em>&thinsp; of instructions the CPU must fetch and execute.&nbsp; But how can we best quantify this impact&thinsp;???</p>
-<h2 id="energy-j-not-power-w">Energy (<code>J</code>) &ndash; not power (<code>W</code>)</h2>
-<p>As software practitioners, we need to measure <strong>joules</strong> and not <strong>watts</strong>.&thinsp; Only by focusing on total power consumption over a period of time can we begin to appreciate the oversized&nbsp; <img alt="😉" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f609.svg" title=":wink:" /> impact our code can have on overall energy efficiency.</p>
-<p class="annotate">To illustrate, let's consider a basic BLE beacon application that advertises packets once-per-second &ndash; following the simple cyclic design-pattern outlined earlier.&nbsp;  To make matters more interesting, we'll compare <em>two different</em>&thinsp; BLE stacks otherwise running on the <em>same</em>&thinsp; MCU:&thinsp;(1)</p>
-<ol>
-<li>NXP's <a href="https://www.nxp.com/products/wireless-connectivity/bluetooth-low-energy/kw39-38-37-32-bit-bluetooth-5-0-long-range-mcus-with-can-fd-and-lin-bus-options-arm-cortex-m0-plus-core:KW39-38-37">KW39/38/37&thinsp;</a>&thinsp; long-range BLE MCU</li>
-</ol>
+<h2 id="em-language-support">EM language support</h2>
+<p>IDE support for a particular programming language has evolved to include a rather extensive set of tooling capabilities:</p>
 <div class="em-ul em-ul-bull">
-<p>a <strong>legacy</strong> BLE stack &ndash; written in C and supplied by the MCU vendor</p>
-<p>a prototype BLE stack &ndash; written entirely in <strong>EM</strong> and coming available in 2024</p>
+<p>language-specific file icons and menu items</p>
+<p>syntax highlighting and bracket matching</p>
+<p>find symbol references and definitions</p>
+<p>correction of common programming errors</p>
+<p>hover help and smart code completions</p>
+<p>formatting and refactoring source code</p>
 </div>
-<p class="annotate">To begin, let's look at a pair of power profiles which report the amount of energy (&thinsp;in <span class="em-color-primary">&thinsp;<strong>&mu;J</strong></span>&thinsp;) each stack consumes within a one-second time window.&ensp;  Spoiler alert &ndash; <strong>EM</strong> wins&thinsp;!!! (1)</p>
+<p class="annotate">With support available for virtually every programming language you know &ndash; and several dozens(1)more you never even knew existed &ndash; our <strong>EM Builder</strong> VS Code extension strives to flatten your learning curve for a <em>new</em>&thinsp; language whose "look-and-feel" does differ from <strong>C</strong>&thinsp;.</p>
 <ol>
-<li>We captured these profiles using a Joulescope <a href="https://www.joulescope.com/products/js220-joulescope-precision-energy-analyzer">JS220</a>&thinsp; energy analyzer &ndash; worth 10x its cost, but maybe 10x over budget.</li>
+<li>actually, hundreds</li>
 </ol>
-<figure id="fig1">
-<p><a class="glightbox" href="/assets/fig-003-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image info" src="/assets/fig-003-1.png" /></a></p>
-<figcaption>Energy per Advertising Cycle
+<div class="admonition engr">
+<p class="admonition-title">Help wanted &ndash; EM Builder contributors</p>
+<p><span class="em-color-teal"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4V7Z"/></svg></span></span>&ensp;knowledge of VS Code internals as well as TypeScript programming <span class="em-float-right">[highly desirable]</span></p>
+<p><span class="em-color-teal"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4V7Z"/></svg></span></span>&ensp;understanding of programming language translation using transpilers <span class="em-float-right">[highly desirable]</span></p>
+<p><span class="em-color-teal"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4V7Z"/></svg></span></span>&ensp;willingness to increase your knowledge&thinsp;/&thinsp;experience in these general areas <span class="em-float-right">[even <em>more</em>&thinsp; desirable]</span></p>
+</div>
+<p>Our <strong>EM Builder</strong> extension currently implements most of the language support features listed above; and we'd grade the extension with a <strong>B</strong> for efforts to date.&nbsp;  To earn an <strong>A</strong>, however, we can use some additional help in improving <em>smart completion</em>&thinsp; and tackling <em>code refactoring</em>&thinsp;.</p>
+<details class="info">
+<summary>FULL DISCLOSURE &ndash; Prior experience with Eclipse</summary>
+<p>Back at Texas Instruments, I campaigned (loudly&thinsp;!!) in my capacity as <em>TI Fellow</em>&thinsp; for migrating the company's <strong>Code Composer Studio</strong> IDE from its legacy implementation atop the Windows SDK to one based upon the <strong>Eclipse CDT</strong> project (first available in mid-2002).&nbsp;  A pillar of the TI <strong>eXpressDSP</strong> strategy, introducing CCS&thinsp;4.0 (based on Eclipse) in 2005 spearheaded a trend that most MCU vendors would eventually follow.</p>
+<p>After retiring from TI in 2009 &ndash; and conceiving EM shortly thereafter &ndash; I wrote a very rudimentary Eclipse plugin (in Java) that introduced language support for EM.&thinsp;  While features like <em>syntax highlighting</em> proved easy to implement, supporting <em>smart completion</em> and <em>code refactoring</em> still remains beyond my grasp; even intermediate features like <em>hover help</em>&thinsp; offered challenges.</p>
+<p>With the Eclipse JDT project and its high-quality support for Java setting the bar rather high, comparable support for EM would require a deep-dive into the JDT and CDT source code.  To move matters along, Emmoco (a company I co-founded in 2011) engaged with <a href="https://www.linkedin.com/in/john-dallaway-5b721/">John Dallaway</a> &ndash; a contributor to the CDT project in particular, knowledgeable about the Eclipse eco-system in general, and a <em>Chartered IT Professional</em>&thinsp; I hold in high regard.</p>
+<p>By early 2021 (already in my next startup, with Emmoco and its acquiror now gone), a decade of "bit-rot" had taken hold in my ~50&thinsp;K lines of Java &ndash; which encompassed an EM language translator as well as an Eclipse plugin.  With that, I undertook a (long overdue&thinsp;!!) re-write of the EM translator into TypeScript, as well as developed the first version of the <strong>EM Builder</strong> extension for VS Code.</p>
+<p>Now weighing in at ~12&thinsp;K lines of TypeScript (with most of this code comprising a command-line translator), EM language support has finally assumed a more approachable and manageable status &ndash; though we can always use some help. <img alt="😉" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f609.svg" title=":wink:" />&nbsp; To understand more about the VS Code origin story (as VS Code&thinsp;+&thinsp;TypeScript continues to excite me), listen to this talk by <a href="https://learn.microsoft.com/en-us/events/visual-studio-code-vs-code-day-2021/keynote">Erich Gamma</a> &ndash; a principal architect of Eclipse who joined Microsoft in 2011.</p>
+</details>
+<h2 id="touring-em-source-files">Touring EM source files</h2>
+<p>Having covered the status of EM language support within VS Code, let's pivot to a novel feature of <strong>EM Builder</strong> specifically crafted to streamline mastery of a new codebase &ndash; a feature heavily exploited in our <a href="https://docs.openem.org/using/using-02">Using EM</a>&thinsp; document.</p>
+<p>Afrer installing <strong>EM Builder</strong> on your host PC, language immersion begins with <em>guided tours</em>&thinsp; of a curated series of examples that illustrate core components of the EM runtime.  The following slides depict the first <strong>EM TOUR</strong> in this series &ndash; a "tour about tours", so to speak.</p>
+<figure id="fig0">
+<p><a class="glightbox" href="/assets/fig-004-0.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image info" src="/assets/fig-004-0.png" /></a></p>
+<figcaption>Starting EM TOUR
 </figcaption>
 </figure>
-<p>Based on these actual values, the <strong>legacy</strong> and <strong>EM</strong> stacks could (in theory&thinsp;!!) advertise for 1.3 and 3.2 years respectively using a CR2032 coin-cell battery with 220&thinsp;mAh of charge.&thinsp;  But <em>why</em>&thinsp; does one stack significantly outperform the other&thinsp;???&nbsp; To answer that question, let's zoom-in:</p>
-<figure id="fig1">
-<p><a class="glightbox" href="/assets/fig-003-2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image info" src="/assets/fig-003-2.png" /></a></p>
-<figcaption>Energy per Advertising Event 
+<figure id="fig1" style="display:none">
+<p><a class="glightbox" href="/assets/fig-004-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image info" src="/assets/fig-004-1.png" /></a></p>
+</figure>
+<figure id="fig2" style="display:none">
+<p><a class="glightbox" href="/assets/fig-004-2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image info" src="/assets/fig-004-2.png" /></a></p>
+</figure>
+<figure id="fig3" style="display:none">
+<p><a class="glightbox" href="/assets/fig-004-3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image info" src="/assets/fig-004-3.png" /></a></p>
+</figure>
+<figure id="fig4" style="display:none">
+<p><a class="glightbox" href="/assets/fig-004-4.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image info" src="/assets/fig-004-4.png" /></a></p>
+</figure>
+<figure id="fig5" style="display:none">
+<p><a class="glightbox" href="/assets/fig-004-5.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image info" src="/assets/fig-004-5.png" /></a></p>
+</figure>
+<figure id="fig6" style="display:none">
+<p><a class="glightbox" href="/assets/fig-004-6.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image info" src="/assets/fig-004-6.png" /></a></p>
+</figure>
+<figure id="fig7" style="display:none">
+<p><a class="glightbox" href="/assets/fig-004-7.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image info" src="/assets/fig-004-7.png" /></a></p>
+</figure>
+<figure id="fig8">
+<p><a class="glightbox" href="/assets/fig-004-8.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image info" src="/assets/fig-004-8.png" /></a></p>
+<figcaption>Viewing EM TOUR GUIDE
 </figcaption>
 </figure>
-<p>Inside a BLE advertising event [&thinsp;<strong>wakeup</strong> &rarr; <strong>prepare</strong> &rarr; <strong>transmit</strong> &rarr; <strong>cleanup</strong> &rarr; <strong>sleep</strong>&thinsp;] the actual packet <strong>TX</strong> window happens very quickly (~250&thinsp;ms&thinsp;).&nbsp; While <strong>transmit</strong> does draw more power (even with the CPU idling), <strong>prepare</strong> and <strong>cleanup</strong> times in fact <em>dominate</em>&thinsp; the &mu;J result.</p>
-<div class="admonition tip">
-<p class="admonition-title">Focusing on MCU power specs can blind us to the true impact of software on energy efficiency.</p>
-</div>
-<p>Performing the same BLE procedures almost twice as fast, the <strong>EM</strong> stack requires only 27% of the energy consumed by the <strong>legacy</strong> stack per advertising event.&nbsp;  Another consequential factor here &ndash; a 200&thinsp;K <strong>legacy</strong> stack versus &le;10&thinsp;K of <strong>EM</strong> code executing entirely in fast SRAM&thinsp;!!!</p>
-<div class="admonition bulb">
-<p class="admonition-title">code size does matter <strong>&thinsp;::&nbsp;</strong> less code [&thinsp;<strong>KB</strong>&thinsp;] &thinsp;&rarr;&thinsp; less energy [&thinsp;<strong>&mu;J</strong>&thinsp;]</p>
-</div>
-<p>Follow us at <a href="/">blog.openem.org</a> to learn more about EM's ability to boost energy efficiency.</p>
+<p>Besides helping bring the language and its runtime to life, the <em>implementation</em>&thinsp; of the <strong>EM TOUR GUIDE</strong> panel depicted above (in just a few hundred lines of TypeScript) attests to the robustness and flexibility of the VS Code environment. </p>
 <h2 id="what-can-you-do-to-help">What can you do to help</h2>
 <div class="em-ul em-ul-check">
-<p>study &ndash; or in the worse case, just skim&thinsp;!!&thinsp; &ndash; this material on <a href="https://docs.openem.org/advancing/energy/#measuring-energy">Measuring Energy</a></p>
-<p>find some (human?) resource to help us migrate to the lower-cost <a href="https://www.st.com/en/evaluation-tools/x-nucleo-lpm01a.html">STM32 Power Shield</a></p>
-<p><a href="https://github.com/em-foundation/em-sdk/discussions">show-and-tell</a>&thinsp; the community about your own experience in measuring power consumption</p>
+<p>read more in <a href="https://docs.openem.org/using/using-01/">Using EM</a>&thinsp; about the language support features available with <strong>EM Builder</strong></p>
+<p><a href="https://github.com/em-foundation/em-sdk/discussions">share your thoughts</a>&thinsp; on using "<strong>VS Code</strong> vs <strong>Eclipse</strong> vs <strong>???</strong>" for embedded development</p>
+<p>message us if you have specific interest in contributing to the implementation of <strong>EM Builder</strong></p>
 </div>
 <p><span class="em-float-right">Happy coding&thinsp;!!! &ensp; <img alt="🌝" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f31d.svg" title=":full_moon_with_face:" />&nbsp;&nbsp;&nbsp;<img alt="💻" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4bb.svg" title=":computer:" /></span></p>
 
