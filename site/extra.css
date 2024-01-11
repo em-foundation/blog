@@ -6,7 +6,7 @@
 
 :root {
     --em-vers: "24.0.10";
-    --em-time: "202401040244";
+    --em-time: "202401110120";
 }
 
 [data-md-color-scheme="slate"] {
@@ -162,6 +162,12 @@ span.em-figcaption {
 
 .em-float-right {
     float: right;
+}
+
+div.em-nav-arrow  p {
+    font-size: 150%;
+    line-height: 0.5;
+    margin: 0;
 }
 
 iframe.em-frame {
