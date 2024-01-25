@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../post-001/">
+        <link rel="prev" href="../post-005/">
       
-      
-        <link rel="next" href="../post-003/">
       
       
       <link rel="icon" href="../assets/favicon.png">
@@ -20,7 +18,7 @@
     
     
       
-        <title>Choosing the next EM • MCU target hardware - Blogging EM</title>
+        <title>CoreMark reimagined – the EM•Mark suite - Blogging EM</title>
       
     
     
@@ -99,7 +97,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#choosing-the-next-emmcu-target-hardware" class="md-skip">
+        <a href="#coremark-reimagined-the-emmark-suite" class="md-skip">
           Skip to content
         </a>
       
@@ -134,7 +132,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Choosing the next EM&thinsp;&bull;&thinsp;MCU target hardware
+              CoreMark reimagined &ndash; the EM&bull;Mark suite
             
           </span>
         </div>
@@ -423,36 +421,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#general-mcu-requirements" class="md-nav__link">
+  <a href="#why-another-mcu-benchmark" class="md-nav__link">
     <span class="md-ellipsis">
-      General MCU requirements
+      Why another MCU benchmark
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#mcu-target-1-ti-cc2340" class="md-nav__link">
+  <a href="#what-will-emmark-measure" class="md-nav__link">
     <span class="md-ellipsis">
-      MCU target #1 &ndash; TI CC2340
+      What will EM&bull;Mark measure
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#factors-for-mcu-2-3" class="md-nav__link">
+  <a href="#how-can-you-get-involved" class="md-nav__link">
     <span class="md-ellipsis">
-      Factors for MCU #2, #3, ...
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-can-you-do-to-help" class="md-nav__link">
-    <span class="md-ellipsis">
-      What can you do to help
+      How can you get involved
     </span>
   </a>
   
@@ -514,7 +503,7 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
-                        <time datetime="2023-12-28 00:00:00" class="md-ellipsis">December 28, 2023</time>
+                        <time datetime="2024-01-25 00:00:00" class="md-ellipsis">January 25, 2024</time>
                       </div>
                     </li>
                     
@@ -526,7 +515,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
                           <span class="md-ellipsis">
                             
-                              3 min read
+                              2 min read
                             
                           </span>
                         </div>
@@ -546,41 +535,18 @@
         
 
 
-<h1 id="choosing-the-next-emmcu-target-hardware">Choosing the next EM&thinsp;&bull;&thinsp;MCU target hardware</h1>
-<p>EM offers up a "write once, run anywhere..." value proposition which enables embedded developers to (easily) migrate code from one MCU to the next.&nbsp; But embedded software portability ultimately depends upon <em>porting the EM software</em> &ndash; hence we need <strong>MCU&thinsp;#2</strong>, <strong>MCU&thinsp;#3</strong>, ....</p>
+<h1 id="coremark-reimagined-the-emmark-suite">CoreMark reimagined &ndash; the EM&bull;Mark suite</h1>
+<p>Virtually all MCU vendors run <a href="https://www.eembc.org/coremark/">CoreMark&reg;</a> &ndash; the premier industry benchmark for meas&shy;uring CPU performance within embedded systems.&thinsp;  But to best capture the additional memory and power con&shy;straints of typical EM applications, we've transformed CoreMark into <strong>EM&bull;Mark</strong>&thinsp;.</p>
 <!-- more -->
 
 <div class="em-nav-arrow">
-<p><a href="/post-001" title="EM has finally arrived &ndash; now what&thinsp;???">&cularr;</a>  <span class="em-float-right"><a href="/post-003" title="Benchmark[et]ing ultra-low-power with EM">&curarr;</a></span></p>
+<p><a href="/post-005" title="EM&thinsp;.&thinsp;optimize = WPO&thinsp;+&thinsp;ACO">&cularr;</a></p>
 </div>
 <figure id="fig0" style="display:none">
-<p><a class="glightbox" href="/assets/summary-002.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image info" src="/assets/summary-002.png" /></a></p>
+<p><a class="glightbox" href="/assets/summary-006.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image info" src="/assets/summary-006.png" /></a></p>
 </figure>
-<h2 id="general-mcu-requirements">General MCU requirements</h2>
-<p>In theory, the EM language and runtime can target <em>any</em>&thinsp; MCU supported by a C/C++ com&shy;piler.&nbsp;  In practice, however, we'll generally consider other factors when choosing MCU hardware:</p>
-<div class="em-ul em-ul-bull">
-<p>availability of relatively inexpensive MCU development board(s) in the marketplace</p>
-<p>the more "modest" the MCU, the better &ndash; simple CPU, limited memory, basic peripherals</p>
-<p>recent MCU with an active developer community &ndash; like <a href="https://docs.arduino.cc/retired/boards/arduino-diecimila">Arduino Diecimilla</a>,&thinsp; but <em>not retired</em></p>
-</div>
-<h2 id="mcu-target-1-ti-cc2340">MCU target #1 &ndash; TI CC2340</h2>
-<p class="annotate">With many of today's MCUs meeting these requirements (and with several EM distros for them already in the <em>BAG</em>(1)), why did we chose the TI CC2340 for our public debut of EM&thinsp;???</p>
-<ol>
-<li>{ Basement | Attic | Garage }</li>
-</ol>
-<p>When first announced by Texas Instruments back in <a href="https://news.ti.com/new-bluetooth-le-wireless-mcus-make-high-quality-rf-and-power-performance-more-affordable">2022</a>&thinsp;, the CC2340 wireless MCU immediately caught our attention &ndash; because the device did <em>not</em>&thinsp; represent the next node in a silicon roadmap featuring a higher-performance CPU core with significantly more memory.</p>
-<p>Rather than pushing the technology "up and to the right" (as silicon vendors tend to do), TI has positioned the CC2340 as a low-cost, entry-level wireless MCU &ndash; and has conse&shy;quently downsized its CPU, trimmed its Flash&thinsp;/&thinsp;SRAM, and streamlined its 2.4&thinsp;GHz radio.</p>
-<p>Compared with its predecessors and competitors alike, we applaud this "less is more" approach to MCU architecture &ndash; which also resonates with the overall objectives of EM.</p>
-<details class="info">
-<summary>FULL DISCLOSURE &ndash; My prior relationship with TI</summary>
-<p>I co-founded a company (Spectron) in 1987, which Texas Instruments would eventually acquire in 1998.&nbsp;  Elected <strong>TI Fellow</strong> in 2000 after broad adoption of our DSP/BIOS product, I then co-created the <em>real-time software components</em>&thinsp; [RTSC]&thinsp; technology &ndash; open-sourced in 2007 through the Eclipse Foundation.</p>
-<p>After retiring from TI in 2009, I morphed the RTSC technology into the initial version of EM &ndash; first used by students at UC Santa Barbara in 2010, and then used to implement Bluetooth Low Energy [BLE] applications within another company (Emmoco) which I also co-founded.</p>
-<p>An early player in the BLE market, Emmoco primarily relied on wireless MCUs from TI &ndash; starting with the CC25xx family (8-bit 8051 CPU) and later moving to the CC26x0 (32-bit Cortex-M3 CPU).&nbsp;  Acquired at the end of 2015 by <a href="https://www.globenewswire.com/news-release/2016/01/12/1024463/0/en/Shelfbucks-Acquires-Bluetooth-Smart-Platform-Company-Emmoco.html">Shelfbucks</a>&thinsp;, wireless MCU support broadened to include the CC13x0 family and its sub-GHz radio.</p>
-<p>From a software perspective, we've actively maintained EM distros for a number of TI CC13xx&thinsp;/&thinsp;CC26xx devices.  Besides writing a highly-optimized sub-GHz communication stack completely in EM, we also discovered EM's value in optimizing TI's own BLE stack &ndash; triming memory to 30&thinsp;KB and reducing power up to 40%.</p>
-<p>Despite a long history working with(in) Texas Instruments, I received no "insider info" about the CC2340 ahead of its general release in mid-2023; and other than a few technical questions posted on the TI Forum, I received no "back door" support while coding its EM distro earlier this year.&nbsp;  But I <em>do</em>&thinsp; like this device &ndash; and so does EM&thinsp;!!!</p>
-</details>
-<h2 id="factors-for-mcu-2-3">Factors for MCU #2, #3, ...</h2>
-<p>Returning to the matter at hand &ndash; identifying the next MCU(s) which EM will target.&nbsp; Looking to complement our choice of the TI CC2340 as <strong>MCU&thinsp;#1</strong>, further considerations we'd like to address with <strong>MCU&thinsp;#2</strong>, <strong>MCU&thinsp;#3</strong>,  and beyond include the following:</p>
+<h2 id="why-another-mcu-benchmark">Why another MCU benchmark</h2>
+<p>CoreMark encompasses four algorithms that reflect typical workloads found in embedded application programs targeting resource-constrained MCUs:</p>
 <table>
 <thead>
 <tr>
@@ -590,36 +556,74 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><span class="em-color-teal"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4V7Z"/></svg></span></span>&ensp;sourced from a silicon vendor other than TI</td>
-<td style="text-align: left;"><span class="em-color-orange"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg></span></span> reinforces a key value proposition of EM</td>
+<td style="text-align: left;"><span class="em-color-teal"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4V7Z"/></svg></span></span>&ensp; <strong>list processing</strong></td>
+<td style="text-align: left;"><span class="em-color-orange"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg></span></span>&nbsp; find and remove elements; generalized sorting</td>
 </tr>
 <tr>
-<td style="text-align: left;"><span class="em-color-teal"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4V7Z"/></svg></span></span>&ensp;features a CPU comparable to Cortex-M0+</td>
-<td style="text-align: left;"><span class="em-color-orange"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg></span></span> probably a 32-bit Arm or RISC-V core</td>
+<td style="text-align: left;"><span class="em-color-teal"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4V7Z"/></svg></span></span>&ensp; <strong>matrix manipulation</strong></td>
+<td style="text-align: left;"><span class="em-color-orange"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg></span></span>&nbsp; add and multiply by a scalar, vector, or matrix</td>
 </tr>
 <tr>
-<td style="text-align: left;"><span class="em-color-teal"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4V7Z"/></svg></span></span>&ensp;promoted as an "ultra-low-power" device</td>
-<td style="text-align: left;"><span class="em-color-orange"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg></span></span> increases the value of EM's energy benchmarks</td>
+<td style="text-align: left;"><span class="em-color-teal"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4V7Z"/></svg></span></span>&ensp; <strong>state machine</strong></td>
+<td style="text-align: left;"><span class="em-color-orange"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg></span></span>&nbsp; scan a string for a variety of numeric formats</td>
 </tr>
 <tr>
-<td style="text-align: left;"><span class="em-color-teal"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4V7Z"/></svg></span></span>&ensp;supports a popular RTOS such as Zephyr</td>
-<td style="text-align: left;"><span class="em-color-orange"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg></span></span> further opportunities to highlight EM's performance</td>
-</tr>
-<tr>
-<td style="text-align: left;"><span class="em-color-teal"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4V7Z"/></svg></span></span>&ensp;optionally includes a radio transceiver</td>
-<td style="text-align: left;"><span class="em-color-orange"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg></span></span> as we <em>do</em>&thinsp; plan to release EM-based comm stacks</td>
+<td style="text-align: left;"><span class="em-color-teal"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4V7Z"/></svg></span></span>&ensp; <strong>cyclic redundancy check</strong></td>
+<td style="text-align: left;"><span class="em-color-orange"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg></span></span>&nbsp; checksum over a sequence of 16-&thinsp;/&thinsp;32-bit values</td>
 </tr>
 </tbody>
 </table>
-<p class="annotate"><a class="em-link" href="https://docs.openem.org/porting/"><strong>Porting EM</strong></a>&thinsp; (scheduled for completion in 1Q24) will take a deep-dive into the TI CC2340 <a href="https://docs.openem.org/cargo/ti.cc23xx/ti.distro.cc23xx/BoardC">distro</a> &ndash; using our <strong>MCU&thinsp;#1</strong> as an examplar to start the train moving on to stations <strong>MCU&thinsp;#2</strong>, <strong>MCU&thinsp;#3</strong>,  and all points beyond.(1)&nbsp; Track our progress in future posts at <a href="/">blog.openen.org</a>.</p>
+<p>Openly and freely available on <a href="https://github.com/eembc/coremark">GitHub</a>&thinsp;, anyone could port CoreMark's C code to their own hardware platform.&thinsp;  To boost the score reported by this CPU-centric benchmark, MCU vendors will select the most aggressive <strong>optimize-for-speed</strong> options when compiling CoreMark.</p>
+<p>In practice, however, most developers targeting resource-constrained MCUs will select the most aggressive <strong>optimize-for-space</strong> options when compiling their applications; these applications also have aggressive energy requirements outside of CoreMark's scope. </p>
+<details class="info">
+<summary>FULL DISCLOSURE &ndash; My limited knowledge of EEMBC ULPMark&reg;</summary>
+<p>Expanding beyond legacy CoreMark, the <a href="https://www.eembc.org/products/">EEMBC</a>&thinsp; organization now offers a broad range of benchmark suites targeting every imaginable facet of embedded processing &ndash; including <a href="https://www.eembc.org/ulpmark/">ULPMark</a>&thinsp;.</p>
+<p>Focused on overall energy efficiency within ultra-low-power MCUs, ULPMark defines the workload of a typical duty-cycled application &ndash; one that spends most of its time in the MCU's deep-sleep mode, and that awakens infrequently to execute a relatively small amount of code.&nbsp;  Less energy [&thinsp;&mu;J&thinsp;] &thinsp;&rArr;&thinsp; higher ULPMark scores.</p>
+<p>But unlike CoreMark, the more recent EEMBC benchmarks require consortium membership or a paid license (though reasonably priced for universities and non-profits).&thinsp;  While completely rational from a fiscal perspective, the EEMBC icensing model does impede inquisitive engineers from simply "playing" with these benchmarks.</p>
+<p>Finally, I'd like to acknowledge <a href="https://www.linkedin.com/in/josephyiu/">Jospeh Yiu</a> &ndash; who has worked closely with EEMBC in developing ULPMark, and with whom I spoke when initially making inquiries in mid-2023.&thinsp; Subsequent conversations with Joseph proved quite insightful &ndash; and in fact inspired and encouraged the transformation of CoreMark in <strong>EM&bull;Mark</strong>&thinsp;.</p>
+</details>
+<p class="annotate">To that end, <strong>EM&bull;Mark</strong> offers an open-source benchmark (written in EM, of course) tailored for resource-constrained MCUs &ndash; the sweet spot for the language and its runtime.&thinsp; Any MCU supporting EM(1)now has a ready-to-run test suite for characterizing system performance.</p>
 <ol>
-<li>Engineers wishing to "hop on board" and port to an MCU of their choice should find us on <a href="(https://github.com/em-foundation/em-sdk/discussions)">GitHub</a>.</li>
+<li>see <a href="/post-002">this post</a> to learn more</li>
 </ol>
-<h2 id="what-can-you-do-to-help">What can you do to help</h2>
+<div class="admonition bulb">
+<p class="admonition-title">But we have an even broder objective for <strong>EM&bull;Mark</strong>&thinsp;!!</p>
+</div>
+<p><strong>EM&bull;Mark</strong> exemplifies how we can transform a "typical" body of legacy C code [&thinsp;CoreMark&thinsp;] into <em>qualitatively</em>&thinsp; higher-level software, which not only produces the same results  but does so with <em>quantitatively</em>&thinsp; higher-levels of performance.</p>
+<h2 id="what-will-emmark-measure">What will EM&bull;Mark measure</h2>
+<p>The <strong>EM&bull;Mark</strong> suite focuses on four distinct metrics that help characterize the MCU as well as the C/C++ compiler used in a resource-constrained application environment:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><span class="em-color-teal"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4V7Z"/></svg></span></span>&ensp; <strong>program size</strong></td>
+<td style="text-align: left;"><span class="em-color-orange"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg></span></span>&nbsp; different compilers, different options &ndash; <code class="language-em highlight"><span class="si">text</span></code>+<code class="language-em highlight"><span class="si">const</span></code>+<code class="language-em highlight"><span class="si">data</span></code>+<code class="language-em highlight"><span class="si">bss</span></code> sections</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="em-color-teal"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4V7Z"/></svg></span></span>&ensp; <strong>execution time</strong></td>
+<td style="text-align: left;"><span class="em-color-orange"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg></span></span>&nbsp; multiple iterations of the benchmark algorithms &ndash; C vs EM, Flash vs SRAM</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="em-color-teal"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4V7Z"/></svg></span></span>&ensp; <strong>active power</strong></td>
+<td style="text-align: left;"><span class="em-color-orange"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg></span></span>&nbsp; multiple iterations of the benchmark algorithms &ndash; C vs EM, Flash vs SRAM</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="em-color-teal"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4V7Z"/></svg></span></span>&ensp; <strong>energy efficiency</strong></td>
+<td style="text-align: left;"><span class="em-color-orange"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg></span></span>&nbsp; one benchmark iteration ater awakening from one second of deep-sleep</td>
+</tr>
+</tbody>
+</table>
+<p>While primarily intended to measure one MCU&thinsp;+&thinsp;compiler combo against another (much like legacy CoreMark),&thinsp; <strong>EM&bull;Mark</strong> also grants us an opportunity to qualitatively and quantitatively benchmark a base of C code against its transformation into EM.</p>
+<h2 id="how-can-you-get-involved">How can you get involved</h2>
 <div class="em-ul em-ul-check">
-<p>review the <strong>Tiny code &rarr; Tiny chips</strong> material found <a href="https://docs.openem.org/intro/#tiny-code-tiny-chips">here</a>&nbsp; within the EM platform documentation</p>
-<p>read up on the <a href="https://www.ti.com/product/CC2340R5">TI CC2340R5</a> device, to appreciate why this particular MCU caught our attention</p>
-<p>voice your opinion about which MCU(s) we should tackle next in the EM SDK <a href="https://github.com/em-foundation/em-sdk/discussions">discussion forum</a></p>
+<p>follow <strong>The EM Foundation</strong> on <a href="https://www.linkedin.com/company/the-em-foundation/about/?viewAsMember=true">LinkedIn</a>&thinsp; where we'll publish <strong>EM&bull;Mark</strong> results</p>
+<p>jump into the EM <a href="https://docs.openem.org/intro/#technical-overview">Technical Overview</a>&thinsp; if you haven't done so already</p>
+<p>explore the CoreMark sources on <a href="https://github.com/eembc/coremark">GitHub</a> &ndash; a "typical" body of legacy C code</p>
 </div>
 <p><span class="em-float-right">Happy coding&thinsp;!!! &ensp; <img alt="🌝" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f31d.svg" title=":full_moon_with_face:" />&nbsp;&nbsp;&nbsp;<img alt="💻" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4bb.svg" title=":computer:" /></span></p>
 

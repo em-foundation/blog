@@ -12,6 +12,8 @@
         <link rel="prev" href="../post-004/">
       
       
+        <link rel="next" href="../post-006/">
+      
       
       <link rel="icon" href="../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
@@ -540,7 +542,8 @@
 <!-- more -->
 
 <div class="em-nav-arrow">
-<p><a href="/post-004" title="Learning EM through VS Code">&cularr;</a></p>
+<p><a href="/post-004" title="Learning EM through VS Code">&cularr;</a>
+<span class="em-float-right"><a href="/post-006" title="CoreMark reimagined &ndash; the EM&bull;Mark suite">&curarr;</a></span></p>
 </div>
 <figure id="fig0" style="display:none">
 <p><a class="glightbox" href="/assets/summary-005.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image info" src="/assets/summary-005.png" /></a></p>
@@ -554,7 +557,7 @@
 </figcaption>
 </figure>
 <details class="info">
-<summary>FULL DISCLOSURE &ndash; Early experience with LTO</summary>
+<summary>FULL DISCLOSURE &ndash; My early experience with LTO</summary>
 <p>Taught for decades to organize our C/C++ programs as independent source files (reflecting our code's inherent modularity), the "whole program" would only come together within the <em>linker</em> &ndash; already downstream from the <em>optimizer</em>&thinsp;, which would only see small chunks of code at a time.</p>
 <p>Back at Texas Instruments, I had the opportunity to work with our compiler team on their <strong>Alchemy</strong> project &ndash; an early foray into what today we commonly term as <em>link-time optimization</em>&thinsp; [LTO]&thinsp;.  When generating a linkable object module, the compiler would embed an intermediate form of its source code within the binary; the linker (which binds object modules into an executable image) would effectively extract the intermediate code from these modules, combine them into a "whole program", and rerun the optimizer on this single compilation unit.</p>
 <p>Fitting comfortably within the traditional <code class="language-em highlight"><span class="si">compile<sup>+</sup></span></code>&thinsp;&rarr;&thinsp;<code class="language-em highlight"><span class="si">link</span></code> build-flow (no need to modify any legacy C/C++ code) personal experience with LTO in popular compilers [&thinsp;GCC, LLVM, IAR&thinsp;] proved somewhat frustrating (ironically) due to lengthy build-times.&thinsp;  But overall, LTO does yield smaller and faster C/C++ program images.</p>
