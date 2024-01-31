@@ -12,6 +12,8 @@
         <link rel="prev" href="../post-005/">
       
       
+        <link rel="next" href="../post-007/">
+      
       
       <link rel="icon" href="../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
@@ -69,6 +71,8 @@
     
     
     
+  <meta property="og:title" content="Post 006: CoreMark reimagined &ndash; the EM&bull;Mark suite"/>
+
    <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
         html.glightbox-open { overflow: initial; height: 100%; }
         .gslide-title { margin-top: 0px; user-select: text; }
@@ -540,7 +544,8 @@
 <!-- more -->
 
 <div class="em-nav-arrow">
-<p><a href="/post-005" title="EM&thinsp;.&thinsp;optimize = WPO&thinsp;+&thinsp;ACO">&cularr;</a></p>
+<p><a href="/post-005" title="EM&thinsp;.&thinsp;optimize = WPO&thinsp;+&thinsp;ACO">&cularr;</a>
+<span class="em-float-right"><a href="/post-007" title="Time for your feedback">&curarr;</a></span></p>
 </div>
 <figure id="fig0" style="display:none">
 <p><a class="glightbox" href="/assets/summary-006.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image info" src="/assets/summary-006.png" /></a></p>
@@ -644,6 +649,62 @@
   
 
 
+
+  <br>
+  <br>
+  <!-- Insert generated snippet here -->
+  <script src="https://giscus.app/client.js"
+  data-repo="em-foundation/blog"
+  data-repo-id="R_kgDOK7vKdQ"
+  data-category="Blog Comments"
+  data-category-id="DIC_kwDOK7vKdc4CcvAO"
+  data-mapping="og:title"
+  data-strict="0"
+  data-reactions-enabled="0"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="dark"
+  data-lang="en"
+  data-loading="lazy"
+  crossorigin="anonymous"
+  async>
+  </script>  
+
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
 
       
     </article>

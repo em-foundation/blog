@@ -6,7 +6,7 @@
 
 :root {
     --em-vers: "24.0.10";
-    --em-time: "202401250003";
+    --em-time: "202401312322";
 }
 
 [data-md-color-scheme="slate"] {
@@ -131,7 +131,7 @@ div.em-break {
     margin-bottom: 24px;
 }
 
-div.em-small {
+.em-small {
     font-size: 0.65rem;
 }
 
