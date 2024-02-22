@@ -576,9 +576,9 @@
 <p>Besides generating C++ code for each <code><span class="filename">.em</span></code> source file, the EM translator also outputs a corresponding <strong>Node.js</strong> module; the translator then combines these individual modules into a single <code><span class="filename">main.js</span></code> program &ndash; executable at <em>build-time</em>&thinsp; on your host PC.</p>
 <p>Said another way, the configuration phase represents a <em>staging ground</em>&thinsp; where the "whole program" comes together for a dry-run, so to speak.&thinsp; By implementing special intrinsic functions, each EM module can actively participate in the configuration process at build-time:</p>
 <div class="em-ul em-ul-bull">
-<p>by binding values to EM language <code class="language-em highlight"><span class="k">config</span></code> parameters published by other modules</p>
-<p>by initializing private <code class="language-em highlight"><span class="k">config</span></code> parameters and <code class="language-em highlight"><span class="k">var</span></code> data objects used internally</p>
-<p>by wiring one module to another using EM's <code class="language-em highlight"><span class="k">proxy</span></code>&thinsp;&ndash;&thinsp;<code class="language-em highlight"><span class="k">interface</span></code> design pattern</p>
+<p>by binding values to EM language <code class="language-em"><span class="k">config</span></code> parameters published by other modules</p>
+<p>by initializing private <code class="language-em"><span class="k">config</span></code> parameters and <code class="language-em"><span class="k">var</span></code> data objects used internally</p>
+<p>by wiring one module to another using EM's <code class="language-em"><span class="k">proxy</span></code>&thinsp;&ndash;&thinsp;<code class="language-em"><span class="k">interface</span></code> design pattern</p>
 <p>by forcibly including or excluding individual modules from downstream compilation</p>
 <p>by generating fragments of specialized C/C++ code which <code><span class="filename">main.cpp</span></code> will incorporate</p>
 </div>

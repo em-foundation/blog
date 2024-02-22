@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../post-007/">
+        <link rel="prev" href="../post-009/">
       
-      
-        <link rel="next" href="../post-009/">
       
       
       <link rel="icon" href="../assets/favicon.png">
@@ -20,7 +18,7 @@
     
     
       
-        <title>EM•Mark program size – TI CC2340R5 - Blogging EM</title>
+        <title>EM•Mark active power – TI CC2340R5 - Blogging EM</title>
       
     
     
@@ -71,7 +69,7 @@
     
     
     
-  <meta property="og:title" content="Post 008: EM&bull;Mark program size &ndash; TI CC2340R5"/>
+  <meta property="og:title" content="Post 010: EM&bull;Mark active power &ndash; TI CC2340R5"/>
 
    <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
         html.glightbox-open { overflow: initial; height: 100%; }
@@ -101,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#emmark-program-size-ti-cc2340r5" class="md-skip">
+        <a href="#emmark-active-power-ti-cc2340r5" class="md-skip">
           Skip to content
         </a>
       
@@ -136,7 +134,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              EM&bull;Mark program size &ndash; TI CC2340R5
+              EM&bull;Mark active power &ndash; TI CC2340R5
             
           </span>
         </div>
@@ -425,9 +423,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#higher-level-design" class="md-nav__link">
+  <a href="#program-size-matters" class="md-nav__link">
     <span class="md-ellipsis">
-      High(er)-level design
+      Program size matters
     </span>
   </a>
   
@@ -507,7 +505,7 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
-                        <time datetime="2024-02-08 00:00:00" class="md-ellipsis">February 8, 2024</time>
+                        <time datetime="2024-02-22 00:00:00" class="md-ellipsis">February 22, 2024</time>
                       </div>
                     </li>
                     
@@ -519,7 +517,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
                           <span class="md-ellipsis">
                             
-                              4 min read
+                              3 min read
                             
                           </span>
                         </div>
@@ -539,42 +537,23 @@
         
 
 
-<h1 id="emmark-program-size-ti-cc2340r5">EM&bull;Mark program size &ndash; TI CC2340R5</h1>
-<p>With its <em>tiny code &rarr; tiny chips</em>&thinsp; mantra capturing the essence of the EM programming language, it should come as no surprise that our first set of <strong>EM&bull;Mark</strong> results will focus on program size &ndash; comparing legacy CoreMark (written in C) with its EM language counterpart.</p>
+<h1 id="emmark-active-power-ti-cc2340r5">EM&bull;Mark active power &ndash; TI CC2340R5</h1>
+<p>Having shown how small(er) EM programs can in fact execute fast(er) &ndash; especially when fetching instructions from zero wait-state SRAM &ndash; <strong>EM&bull;Mark</strong> now reveals the (even greater) impact of program size on the power consumption of resource-constrained MCUs.</p>
 <!-- more -->
 
 <div class="em-nav-arrow">
-<p><a href="/post-007" title="Time for your feedback">&cularr;</a>
-<span class="em-float-right"><a href="/post-009" title="EM&bull;Mark execution time &ndash; TI CC2340R5">&curarr;</a></span></p>
+<p><a href="/post-009" title="EM&bull;Mark execution time &ndash; TI CC2340R5">&cularr;</a></p>
 </div>
 <figure id="fig0" style="display:none">
-<p><a class="glightbox" href="/assets/summary-008.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image info" src="/assets/summary-008.png" /></a></p>
+<p><a class="glightbox" href="/assets/summary-010.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image info" src="/assets/summary-010.png" /></a></p>
 </figure>
-<h2 id="higher-level-design">High(er)-level design</h2>
-<p><strong>EM Platform Documentation</strong> recently added an article entitled <a href="https://docs.openem.org/advancing/coremark">CoreMark Reimagined</a>&thinsp;, which explains the transformation of a "typical" base of C code into a higher-level rendition written in EM.&thinsp;  Details aside, the following diagram summarizes the design of <strong>EM&bull;Mark</strong>&thinsp;:</p>
-<figure id="fig1">
-<p><a class="glightbox" href="/assets/fig-007-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image info" src="/assets/fig-007-1.png" /></a></p>
-<figcaption>EM&bull;Mark Design Hierarchy
-</figcaption>
-</figure>
-<div class="em-ul em-ul-bull">
-<p>the blue boxes [<code class="language-em"><span class="nn">ActiveRunnerP</span></code>, <code class="language-em"><span class="nn">CoreBench</span></code>] represent <em>concrete</em>&thinsp; EM modules, while the green boxes [<code class="language-em"><span class="t">BenchI</span></code>, <code class="language-em"><span class="t">ComparatorI</span></code>] correspond to <em>abstract</em>&thinsp; EM interfaces</p>
-<p><em>different</em>&thinsp; concrete modules might implement the <em>same</em>&thinsp; abstract interface &ndash; enabling clients to use these modules in a "plug-compatible" (polymorphic) manner</p>
-<p>the blue arrows depict a <em>direct</em> coupling between module suppliers and their clients &ndash; for example, <code class="language-em"><span class="nn">ActiveRunnerP</span></code> explicitly imports <code class="language-em"><span class="nn">CoreBench</span></code> and calls its public functions</p>
-<p>the red arrows, on the other hand, depict the use of ephemeral EM proxies which <em>decouple</em>&thinsp; module clients and suppliers by introducing a level of indirection</p>
-<p>the red gear inside <code class="language-em"><span class="nn">CoreBench</span></code> indicates the pivotal role played by this module in "wiring together" many of the plug-compatible components of this design  </p>
-</div>
-<p>Take a quick peek at the legacy <code class="language-em"><span class="nf">core_list_init</span></code> function defined in the <code><span class="filename">core_list_join.c</span></code> <a href="https://github.com/eembc/coremark/blob/main/core_list_join.c#L251">source file</a> and compare it with its <code class="language-em"><span class="nf">setup</span></code> counterpart found <a href="https://docs.openem.org/cargo/em.bench/em.coremark/ListBench/#__codelineno-0-168">here</a> in <code><span class="filename">ListBench.em</span></code>&thinsp;.</p>
-<p>Setting aside the more "modern" look-and-feel of the EM language, <code class="language-em highlight"><span class="nn">ListBench</span><span class="x">.</span><span class="nf">setup</span></code> in fact contains <em>less</em>&thinsp; runtime code than its C counterpart.&thinsp; How so &ndash; because <strong>EM&bull;Mark</strong> leverages the <strong>WPO&thinsp;+&thinsp;ACO</strong> optimizations highlighted in this earlier <a class="em-link" href="/post-005"><strong>Blogging EM</strong></a> post.</p>
-<div class="admonition abstract">
-<p class="admonition-title">But doesn't <strong>EM&bull;Mark</strong> cheat here&thinsp;???</p>
-<p>Viewing CoreMark as a "black-box", the benchmark receives initialized data structures as input and produces checksums as output &ndash; transforming input to output by iteratively executing a prescribed set of algorithms.&thinsp;  The time required to run <em>N</em>&thinsp; iterations of the benchmark ultimately determines the CoreMark score.</p>
-<p>The benchmark defines a known set of <em>seed</em>&thinsp; values used when initializing as well as manipulating the input data structures.  To prevent overly aggressive optimization by the compiler, CoreMark mandates that source code declare these seeds as <code class="language-em"><span class="k">volatile</span></code> C variables with values only known at runtime; <strong>EM&bull;Mark</strong> follows suit.</p>
-<p>But since initializing the input data lies outside of the benchmark's measurement window, <strong>EM&bull;Mark</strong> leverages the full power of EM to minimize the run-time overhead of (say) <code class="language-em highlight"><span class="nn">ListBench</span><span class="x">.</span><span class="nf">setup</span></code> by migrating some of the legacy <code class="language-em"><span class="nf">core_list_init</span></code> logic into <code class="language-em highlight"><span class="nn">ListBench</span><span class="x">.</span><span class="nf">em$construct</span></code> &ndash; which now executes at <a href="https://docs.openem.org/cargo/em.bench/em.coremark/ListBench/#__codelineno-0-44">build-time</a>&thinsp; on your PC.</p>
-<p>A novel feature of EM, build-time execution of functions normally relegated to run-time within C plays a critical role in reducing overall program size.&thinsp;  EM language <code class="language-em"><span class="k">config</span></code> params like <code class="language-em highlight"><span class="nn">ListBench</span><span class="x">.</span><span class="n">maxElems</span></code> &ndash; build-time variables, but run-time constants &ndash; also allow the backend compiler to further optimize program space <em>and</em>&thinsp; speed.</p>
-</div>
+<h2 id="program-size-matters">Program size matters</h2>
+<p>Every MCU datasheet which characterizes <strong>active power consumption</strong> invariably does so by executing either:&nbsp; <span class="em-label"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 17h-2V9h-2V7h4m5-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg></span></span> an empty <code class="language-em highlight"><span class="k">while</span><span class="x">(1)</span></code> loop, or else <span class="em-label"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 11a2 2 0 0 1-2 2h-2v2h4v2H9v-4a2 2 0 0 1 2-2h2V9H9V7h4a2 2 0 0 1 2 2m4-6H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg></span></span> the legacy CoreMark program.</p>
+<p>Expressed in units such as <strong>mA</strong> or <strong>&mu;A&thinsp;/&thinsp;Mhz</strong>&thinsp;, case <span class="em-label"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 11a2 2 0 0 1-2 2h-2v2h4v2H9v-4a2 2 0 0 1 2-2h2V9H9V7h4a2 2 0 0 1 2 2m4-6H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg></span></span> will typically measure higher due to the extra power consumed by reading a block of instructions from the Flash <em>when</em> (not if) a CPU cache-miss occurs &ndash; a reasonable assumption knowing the size of legacy CoreMark.</p>
+<p>We often focus on how the cache improves program execution time &ndash; by automatically loading instructions from slow(er) Flash into fast(er) SRAM when needed.&thinsp; But since Flash draws <em>more</em>&thinsp; current than SRAM when active, the cache also helps lower total power consumption.</p>
+<p>As we reported <a href="/post-009/#program-size-matters">previously</a>, placing the entire <strong>EM&bull;Mark</strong> program in SRAM can improve execution time; and as you'll now learn, this same sort SRAM-only configuration (which the EM language strongly encourages) can have even greater impact on active power consumption.</p>
 <h2 id="the-envelope-please">The envelope, please&thinsp;...</h2>
-<p>Using the setup described in our recent <a href="https://docs.openem.org/advancing/emmark/#__tabbed_1_1">EM&bull;Mark Results</a> article, the legacy CoreMark program built with TI's compiler weighs in with the following section sizes for this image:</p>
+<p>Using the setup described in <a href="https://docs.openem.org/advancing/emmark/#__tabbed_1_1">EM&bull;Mark Results</a>, the following summarizes active power consumption when executing CoreMark versus <strong>EM&bull;Mark</strong> with different memory configurations: </p>
 <table>
 <thead>
 <tr>
@@ -586,33 +565,59 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code class="language-em highlight"><span class="si">text (8798)</span></code> <code>[XO]</code></td>
-<td style="text-align: left;"><code class="language-em highlight"><span class="si">const (3777)</span></code> <code>[RO]</code></td>
-<td style="text-align: left;"><code class="language-em highlight"><span class="si">data (286)</span></code> <code>[RW]</code></td>
-<td style="text-align: left;"><code class="language-em highlight"><span class="si">bss (2372)</span></code> <code>[RW]</code></td>
+<td style="text-align: left;"><span class="em-color-orange">CoreMark</span></td>
+<td style="text-align: left;"><span class="em-color-orange">text&thinsp;+&thinsp;const [&thinsp;Flash&thinsp;]</span></td>
+<td style="text-align: left;"><span class="em-color-orange">7.77&thinsp;mW</span></td>
+<td style="text-align: left;"><span class="em-color-orange">1.37&thinsp;mJ</span></td>
 </tr>
 <tr>
-<td style="text-align: left;">executable code</td>
-<td style="text-align: left;">initialized constants</td>
-<td style="text-align: left;">initialized variables</td>
-<td style="text-align: left;">zero-initialized variables</td>
+<td style="text-align: left;"><span class="em-color-teal">EM&bull;Mark</span></td>
+<td style="text-align: left;"><span class="em-color-teal">text&thinsp;+&thinsp;const [&thinsp;Flash&thinsp;]</span></td>
+<td style="text-align: left;"><span class="em-color-teal">6.84&thinsp;mW</span></td>
+<td style="text-align: left;"><span class="em-color-teal">1.03&thinsp;mJ</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="em-color-teal">EM&bull;Mark</span></td>
+<td style="text-align: left;"><span class="em-color-teal">text&thinsp;+&thinsp;const [&thinsp;SRAM&thinsp;]</span></td>
+<td style="text-align: left;"><span class="em-color-teal">5.09&thinsp;mW</span></td>
+<td style="text-align: left;"><span class="em-color-teal">0.63&thinsp;mJ</span></td>
 </tr>
 </tbody>
 </table>
-<p>We've explicitly employed the most aggressive <strong>optimize-for-space</strong> compiler options here; building legacy CoreMark with the most agressive <strong>optimize-for-space</strong> options, on the other hand, would likely increase overall program size by 2X&thinsp;-&thinsp;3X&thinsp;.</p>
-<p>The following screen-shot reports comparable section sizes for <code class="language-em"><span class="nn">ActiveRunnerP</span></code> &ndash; an EM program (patterned after <code><span class="filename">core_main.c</span></code>) which iteratively applies a prescribed set of algorithms to a pre-initialized dataset, and then outputs a set of checksums when complete.</p>
-<figure id="fig2">
-<p><a class="glightbox" href="/assets/fig-007-2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image info" src="/assets/fig-007-2.png" /></a></p>
-<figcaption>EM&bull;Mark Image Size
+<div class="em-figcaption">
+<p>Active Power &ndash; Summary</p>
+</div>
+<p>Armed with a <a href="https://www.joulescope.com/products/js220-joulescope-precision-energy-analyzer">Joulescope JS220</a>&thinsp; energy analyzer, we've captured traces of <em>power consumption over time</em> &ndash; enabling us to visualize overall energy utilization [&thinsp;E = &int;&thinsp;Pdt&thinsp;] when executing programs on our MCU:</p>
+<figure id="fig1">
+<p><a class="glightbox" href="/assets/fig-010-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image info" src="/assets/fig-010-1.png" /></a></p>
+<figcaption>EM&bull;Mark Power Capture &ndash; SRAM
 </figcaption>
 </figure>
-<p>While certainly <em>NOT</em>&thinsp; the original intent of CoreMark, its legacy base of C code does provide us with an interesting opportunity to learn more about EM &ndash; a higher-level programming language with higher-levels of program performance.</p>
-<p>Future blog posts should subtantiate our claim about EM, by reporting additional <strong>EM&bull;Mark</strong> results in <strong>execution time</strong>, <strong>active power</strong>, and <strong>energy efficiency</strong>&thinsp;.</p>
+<p>To align with MCU datasheet conventions, our earlier summary reports the <em>average</em> amount of power in <strong>mW</strong> consumed during our ten benchmark iterations [&thinsp;<span class="em-color-orange">7.77</span>, <span class="em-color-teal">6.84</span>, <span class="em-color-teal">5.09</span>&thinsp;]&thinsp;; our Core&shy;Mark result in fact matches the <span class="em-color-orange">2.6&thinsp;mA</span> [&thinsp;@&thinsp;3V&thinsp;] found in the TI CC2340R5 <a href="https://www.ti.com/lit/gpn/cc2340r5">datasheet</a>&thinsp;.</p>
+<p>At the same time, we feel that <em>energy</em>&thinsp; measured in <strong>mJ</strong> [&thinsp;<span class="em-color-orange">1.37</span>, <span class="em-color-teal">1.03</span>, <span class="em-color-teal">0.63</span>&thinsp;] better reflects the dynamics of a "live" system executing an application program; in somewhat simple terms, <em>hardware</em>&thinsp; contributes raw power while <em>software</em>&thinsp; adds the critical dimension of time.</p>
+<p>Case in point, consider some factors contributing to the (significantly lower) <span class="em-color-teal">0.63&thinsp;mJ</span> of energy consumed when executing ten iterations of <strong>EM&bull;Mark</strong> from zero wait-state SRAM:</p>
+<div class="em-ul em-ul-bull">
+<p>fetching instructions from SRAM requires less power than Flash </p>
+<p>programs will generally execute faster when placed in SRAM</p>
+<p>we can actually <em>power-down</em>&thinsp; the Flash and its cache</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Faster clock, more power, but less energy&thinsp;???</p>
+<p>Some MCUs (but not the TI CC2340R5) allow software to change the frequency of the master clock, selecting among a set of discrete chip-specific rates ranging from (say) 4&thinsp;MHz to &ge;&thinsp;100&thinsp;MHz.&thinsp;  The MCU datasheet will then specify a corresponding range of active power values in <strong>mA</strong> or <strong>&mu;A&thinsp;/&thinsp;Mhz</strong>&thinsp;.</p>
+<p>At first glance, the (linear) relationship between clock frequency and current draw suggests that faster execution requires more power &ndash; a reasonable trade-off.&thinsp; But the MCU datasheet only presents an "instantaneous" perspective that lacks the dimension of time, masking opportunities to <em>reduce</em>&thinsp; overall energy consumption.</p>
+<p>Looking deeper at MCU power consumption, we can distinquish between <strong>leakage</strong> (static) and <strong>switching</strong> (dynamic) current &ndash; with the latter proportionally tracking clock rate.&thinsp; But once we factor in the <em>fixed</em>&thinsp; amount of static current consumed by on-chip memory&thinsp;/&thinsp;peripherals, a faster clock can in fact lower energy consumption.</p>
+<p>As silicon processes advance towards smaller transistors in higher densities, leakage current becomes an even larger factor in our energy calculus &ndash; especially for embedded applications with low active duty-cycles that spend most of their time in "deep-sleep" modes.</p>
+<p>Finally, a special tip-of-the-hat <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.11 11.92c.02-.21.03-.42.03-.63 0-3.43-1.43-7.15-2.86-7.15S13.42 5.57 12 5.57c-1.43 0-2.86-1.43-4.29-1.43-1.43 0-2.85 3.65-2.85 7.15 0 .21 0 .42.02.63 2.34.53 4.72.8 7.12.79 2.45 0 4.83-.27 7.11-.79M3.45 18.18a29.69 29.69 0 0 0 17.09 0A2.142 2.142 0 0 0 22 16.17c0-.45-.14-.88-.39-1.25-.26-.36-.61-.63-1.05-.78-2.7.86-5.56 1.31-8.56 1.31-3 0-5.87-.45-8.57-1.31-.43.15-.78.43-1.04.79-.25.36-.39.79-.39 1.24 0 .94.61 1.73 1.45 2.01Z"/></svg></span> to <a href="https://www.linkedin.com/in/joe-circello-59a0657/">Joe Circello</a>&thinsp; for our multiple rounds of discussions in the summer of 2022 on silicon process as well as hardware architecture, and how EM might influence future MCU designs.</p>
+</div>
+<p>These results further confirm some hypotheses put forth in <a href="/intro/#tiny-code-tiny-chips">Tiny code &rarr; Tiny chips</a>, and suggest a very different SRAM-centric MCU architecture with <span class="em-label"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 17h-2V9h-2V7h4m5-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg></span></span> a faster clock, <span class="em-label"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 11a2 2 0 0 1-2 2h-2v2h4v2H9v-4a2 2 0 0 1 2-2h2V9H9V7h4a2 2 0 0 1 2 2m4-6H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg></span></span> low-cost Flash, and <span class="em-label"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 10.5a1.5 1.5 0 0 1-1.5 1.5c.84 0 1.5.67 1.5 1.5V15c0 1.11-.89 2-2 2H9v-2h4v-2h-2v-2h2V9H9V7h4c1.11 0 2 .89 2 2m4-6H5c-1.09 0-2 .9-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg></span></span> <em>no</em>&thinsp; cache &ndash; yielding a smaller chip with fewer gates which consumes less power.</p>
+<div class="admonition bulb">
+<p class="admonition-title">All possible because EM can dramatically reduce program size&ensp;::&nbsp; &darr;&thinsp;<strong>KB</strong>&ensp;&thinsp;&rArr;&ensp;&darr;&thinsp;<strong>mJ</strong></p>
+</div>
 <h2 id="how-can-you-get-involved">How can you get involved</h2>
 <div class="em-ul em-ul-check">
-<p>dive into <a href="https://docs.openem.org/advancing/coremark">CoreMark Reimagined</a>&thinsp;, to learn more about the <strong>CoreMark</strong>&thinsp;&rArr;&thinsp;<strong>EM&bull;Mark</strong> re-design</p>
-<p>with <strong>EM&bull;Mark</strong> now available for download, maybe you should now consider <a href="https://docs.openem.org/install/">Installing EM</a></p>
-<p>try building <code class="language-em"><span class="nn">ActiveRunnerP</span></code> with different compiler options &ndash; or even with different compilers</p>
+<p>review this earlier <a href="/post-003">post</a>, which talks about MCU power specs in the context of total energy usage </p>
+<p>dive into the <a href="https://docs.openem.org/advancing/coremark/">CoreMark Reimagined</a>&thinsp; and <a href="https://docs.openem.org/advancing/emmark/">EM&bull;Mark Results</a>&thinsp; articles for more technical details</p>
+<p>share your experiences in measuring power&thinsp;/&thinsp;energy, as well as your thoughts on ULP MCU design</p>
 </div>
 <p><span class="em-float-right">Happy coding&thinsp;!!! &ensp; <img alt="🌝" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f31d.svg" title=":full_moon_with_face:" />&nbsp;&nbsp;&nbsp;<img alt="💻" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4bb.svg" title=":computer:" /></span></p>
 

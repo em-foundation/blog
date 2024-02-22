@@ -6,7 +6,7 @@
 
 :root {
     --em-vers: "24.0.10";
-    --em-time: "202402150000";
+    --em-time: "202402220000";
 }
 
 [data-md-color-scheme="slate"] {
@@ -153,6 +153,20 @@ span.em-color-primary {
     color: var(--md-primary-fg-color);
 }
 
+span.em-color-tan {
+    color: hsl(31, 42%, 86%);
+}
+
+div.em-figcaption {
+    color: var(--md-default-fg-color--light);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 90%;
+    margin-bottom: 22px;
+    margin-top: -12px;
+    text-align: center;
+}
+
 span.em-figcaption {
     color: var(--md-default-fg-color--light);
     font-style: normal;
@@ -219,8 +233,6 @@ span.em-screen {
     color: hsl(180, 100%, 75%);
     font-size: 0.8rem;
 }
-
-
 
 /* table adjustments */
 
